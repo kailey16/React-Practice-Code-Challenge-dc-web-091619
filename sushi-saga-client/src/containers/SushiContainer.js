@@ -9,9 +9,8 @@ class SushiContainer extends Component{
 
   moreSushis = () => {
     this.setState(pre => {
-      return {
-        sushisI: pre.sushisI + 4
-      }
+      return pre.sushisI <= this.props.sushis.length - 8 ?
+      ({sushisI: pre.sushisI + 4}) : ({sushisI: 0})
     })
   }
 
@@ -22,6 +21,7 @@ class SushiContainer extends Component{
         {
           this.props.sushis.slice(this.state.sushisI, this.state.sushisI + 4).map(sushi => {
           return <Sushi
+                    key={sushi.id}
                     sushi={sushi} 
                     sushiClicked={this.props.sushiClicked}
                     eatenSushis={this.props.eatenSushis} />})

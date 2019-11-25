@@ -1,13 +1,12 @@
 import React from 'react'
 
 const Sushi = (props) => {
-  const { name, img_url, price } = props.sushi
+  const { name, price } = props.sushi
   return (
     <div className="sushi">
       <div className="plate" 
            onClick={(e) => props.sushiClicked(props.sushi)}>
-        { 
-          props.eatenSushis.includes(props.sushi) ?
+        { props.eatenSushis.includes(props.sushi) ?
           null
           :
           <img src={require(`../imgs/sushi1.png`)} width="100%" alt={`${name}`} />

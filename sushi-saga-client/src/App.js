@@ -23,19 +23,30 @@ class App extends Component {
   }
 
   sushiClicked = (sushiObj) => {
-    this.state.money > sushiObj.price ? (
-    this.setState(pre =>
-      {return {
-      eatenSushis: [...pre.eatenSushis, sushiObj],
-      money: pre.money - sushiObj.price
-    }})) : null
+    return this.state.money >= sushiObj.price ? (
+      this.state.eatenSushis.includes(sushiObj) ? alert(`You already ate ${sushiObj.name}!`) :
+      (this.setState(pre =>
+        { return {
+                  eatenSushis: [...pre.eatenSushis, sushiObj],
+                  money: pre.money - sushiObj.price
+                }
+        }
+      ))) : null
+  }
+
+  addMoney = () => {
+    this.setState(pre => {
+      return {
+        money: pre.money + 50
+      }
+    })
   }
 
   render() {
     return (
       <div className="app">
         <SushiContainer sushis={this.state.sushis} sushiClicked={this.sushiClicked}  eatenSushis={this.state.eatenSushis}/>
-        <Table eatenSushis={this.state.eatenSushis} money={this.state.money}/>
+        <Table eatenSushis={this.state.eatenSushis} money={this.state.money} addMoney={this.addMoney} />
       </div>
     );
   }
