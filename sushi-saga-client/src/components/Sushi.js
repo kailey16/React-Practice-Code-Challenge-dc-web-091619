@@ -1,20 +1,29 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
+
+// {
+//   "id": 1,
+//   "name": "Tako Supreme",
+//   "img_url": "https://sushistickers.com/img/sushi-slice_99.png",
+//   "price": 20,
+//   "created_at": "2018-07-27T18:53:16.241Z"
+//   }
 
 const Sushi = (props) => {
+  const { name, img_url, price } = props.sushi
   return (
     <div className="sushi">
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
+           onClick={(e) => props.sushiClicked(props.sushi)}>
         { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
-            null
+          props.eatenSushis.includes(props.sushi) ?
+          null
           :
-            <img src={/* Give me an image source! */} width="100%" />
+          <img src={require(`../imgs/sushi1.png`)} width="100%" alt={`${name}`} />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {name} - ${price}
       </h4>
     </div>
   )
