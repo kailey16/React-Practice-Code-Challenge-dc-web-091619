@@ -1,14 +1,5 @@
 import React from 'react'
 
-
-// {
-//   "id": 1,
-//   "name": "Tako Supreme",
-//   "img_url": "https://sushistickers.com/img/sushi-slice_99.png",
-//   "price": 20,
-//   "created_at": "2018-07-27T18:53:16.241Z"
-//   }
-
 const Sushi = (props) => {
   const { name, img_url, price } = props.sushi
   return (
